@@ -1,0 +1,129 @@
+button {
+    cursor: pointer;
+}
+
+.custom-sidebar {
+
+    width: 175px;
+}
+
+.custom-sidebar li.nav-item.submenu.dropdown {
+    display: block;
+    width: 175px;
+}
+
+.custom-sidebar li.nav-item a {
+    color: #fff;
+    width: 175px;
+}
+
+.custom-sidebar li.nav-item .dropdown-menu a {
+    color: #000;
+    width: 175px;
+}
+
+.custom-sidebar li.nav-item .dropdown-menu a:hover {
+    color: #fff;
+    background-color: #007BFF;
+}
+
+.custom-sidebar li.nav-item a:hover {
+    color: #fff;
+    background-color: #007BFF;
+
+}
+
+.facilities_item .fs-wrap {
+    color: #000;
+}
+
+.room-feature .alert {
+    padding: 0px 15px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: 16px;
+}
+
+.badge-info {
+    background-color: #52c5fd;
+    margin-top: 5px;
+
+}
+
+.fa-arrow-circle-o-right {
+    color: #014e13;
+    font-size: 18px;
+}
+
+#regPopup .modal-dialog {
+    max-width: 50%;
+}
+
+th.next, th.prev {
+    position: relative;
+    transition: all .5s;
+    /* background: #f3c300 */
+}
+
+th.next:hover, th.prev:hover {
+    background: #f3c300 !important;
+}
+
+th.next:before {
+    content: ">";
+}
+
+th.prev:before {
+    content: "<";
+}
+
+.booking_table {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 660px;
+}
+
+.dflex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dflex .book_tabel_item {
+    width: 180px;
+}
+
+.dflex .book_now_btn.button_hover {
+    cursor: pointer;
+}
+
+.button_hover {
+    cursor: pointer;
+}
+
+.invoice {
+    top: 45px;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.dataTable td.action-btn {
+    padding: 0;
+    display: flex;
+
+}
+.c-sidbar {
+    width: 176px;
+}
+
+@media (min-width: 576px){
+    .modal-dialog-pay {
+        max-width: 65%;
+    }
+}
