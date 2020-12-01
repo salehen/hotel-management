@@ -111,7 +111,8 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-sm-10">
+                            <div class="ml-auto mr-3">
+                                <a href="register"><button type="button" class="btn btn-info">Register Now</button></a>
                                 <button type="submit" class="btn btn-primary">Sign in</button>
                             </div>
                         </div>

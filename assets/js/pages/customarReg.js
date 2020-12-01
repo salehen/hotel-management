@@ -13,7 +13,6 @@ $(document).ready(function () {
                     "email": em
                 },
                 success:function(res){
-                    // console.log(res);
                     if (res == 1){
                         $("#val-email").html("<h5>This Email NOT Available.</h5>");
                         $(".em").css({
@@ -33,4 +32,38 @@ $(document).ready(function () {
 
         //alert(em);
     });
+    
+    $("#coid").change(function () {
+        let id = $(this).val();
+        if(id > 0){
+            $.ajax({
+                type: "post",
+                url: $("meta[name='url']").attr('content')+"api/city.php",
+                data: {
+                    "id": id
+                },
+                success:function(response){
+                    if (response){
+                        rtl = "";
+                        $("#cid option").remove();
+                        rtl += `<option value="">Select one</option>`;
+                        for(var index in response['city']){
+                            rtl += `<option value="`+response['city'][index]['id']+`">`+response['city'][index]['name']+`</option>`
+                        }
+                        $('#cid').append(rtl);
+                    }else{
+                        $("#cid option").remove();
+                        $('#cid').append(`<option value="">No City Found</option>`);
+                    }
+                }
+            })
+        } else {
+            $("#cid option").remove();
+            $('#cid').append(`<option value="">Select County First</option>`);
+        }
+    })
+    
+    
+    
+    
 });

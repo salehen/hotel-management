@@ -8,8 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     ];
     $results = $obj->view("customers", "*", "", $where);
     if ($results->num_rows>0){
-        echo "1";
-    }else{
-        echo "2";
+        echo 1;
     }
 }

@@ -1,9 +1,7 @@
 <?php
 
 $myScript = [
-    "assets/js/my.js",
-    "assets/js/pages/CustomarReg.js",
-
+    "assets/js/pages/customarReg.js"
 ];
 
 ?>
@@ -75,6 +73,7 @@ $myScript = [
                         ];
 
                         if($om->insert("customers", $data)){
+                            
                             /*
                                                         $fContent = $_POST['metatitel'] . "~$$@@!!~" . $_POST['metadis'];
                                                         $fh = fopen("files/{$om->ID}.txt", "w");
@@ -84,7 +83,10 @@ $myScript = [
                                                         if ($ext) {
                                                             move_uploaded_file($_FILES['pic']['tmp_name'], "images/{$om->ID}.{$ext}");
                                                         }*/
-                            echo "create admin Successfully <br>";
+                            // echo "create admin Successfully <br>";
+                            $_SESSION['cname'] = $_POST['fname'] . " " . $_POST['lname'];
+                            $_SESSION['cid'] = $om->ID;
+                            $_SESSION['type'] = 2;
                             echo "<script>window.location='index.php?c=dashboard&ms=Profile created Successfully'</script>";
                         }
 
@@ -138,17 +140,14 @@ $myScript = [
                         <div class="form-group row">
                             <label for="coid" class="col-sm-3 col-form-label">Country</label>
                             <div class="col-sm-9">
-                                <select name="coid" id="cid" class="form-control">
+                                <select name="coid" id="coid" class="form-control">
                                     <option value="">Select one</option>
 
                                     <?php
-
                                     $data = $om->view("countries", "id, name", array("name", "asc"));
-
                                     while($m = $data->fetch_object()){
                                         echo "<option value='{$m->id}'>{$m->name}</option>";
                                     }
-
                                     ?>
                                 </select>
                             </div>
@@ -157,17 +156,7 @@ $myScript = [
                             <label for="cid" class="col-sm-3 col-form-label">city</label>
                             <div class="col-sm-9">
                                 <select name="cid" id="cid" class="form-control">
-                                    <option value="">Select one</option>
-
-                                    <?php
-
-                                    $data = $om->view("citys", "id, name", array("name", "asc"));
-
-                                    while($m = $data->fetch_object()){
-                                        echo "<option value='{$m->id}'>{$m->name}</option>";
-                                    }
-
-                                    ?>
+                                    <option value="">Select County First</option>
                                 </select>
                             </div>
                         </div>
@@ -198,7 +187,7 @@ $myScript = [
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-9">
+                            <div class="ml-auto mr-3">
                                 <button type="submit" class="btn btn-primary">Registred</button>
                             </div>
                         </div>
@@ -210,42 +199,40 @@ $myScript = [
 </section>
 <!--================ Facilities Area  =================-->
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("input[name='email']").keyup(function () {
-            var em = $(this).val();
-            function validateEmail(email) {
-                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(String(email).toLowerCase());
-            }
-            if (validateEmail(em)){
-                $.ajax({
-                    type: "post",
-                    url: $("meta[name='url']").attr('content')+"api/check-email-available.php",
-                    data: {
-                        "email": em
-                    },
-                    success:function(res){
-                        console.log(res);
-                        if (res == 1){
-                            $("#val-email").html("<h5>NOT Available Please Try new one</h5>");
-                            $(".em").css({
-                                'color': 'red'
-                            })
-                        }else {
-                            $("#val-email").html("<h5>Available.</h5>");
-                            $(".em").css({
-                                'color': 'green'
-                            })
-                        }
-                    }
-                })
-            }else {
-                $("#val-email").text("");
-            }
-
-            //alert(em);
-        });
-    });
-</script>
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function () {-->
+<!--        $("input[name='email']").keyup(function () {-->
+<!--            var em = $(this).val();-->
+<!--            function validateEmail(email) {-->
+<!--                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;-->
+<!--                return re.test(String(email).toLowerCase());-->
+<!--            }-->
+<!--            if (validateEmail(em)){-->
+<!--                $.ajax({-->
+<!--                    type: "post",-->
+<!--                    url: $("meta[name='url']").attr('content')+"api/check-email-available.php",-->
+<!--                    data: {-->
+<!--                        "email": em-->
+<!--                    },-->
+<!--                    success:function(res){-->
+<!--                        console.log(res);-->
+<!--                        if (res == 1){-->
+<!--                            $("#val-email").html("<h5>NOT Available Please Try new one</h5>");-->
+<!--                            $(".em").css({-->
+<!--                                'color': 'red'-->
+<!--                            })-->
+<!--                        }else {-->
+<!--                            $("#val-email").html("<h5>Available.</h5>");-->
+<!--                            $(".em").css({-->
+<!--                                'color': 'green'-->
+<!--                            })-->
+<!--                        }-->
+<!--                    }-->
+<!--                })-->
+<!--            }else {-->
+<!--                $("#val-email").text("");-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
